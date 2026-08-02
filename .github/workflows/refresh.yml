@@ -23,12 +23,12 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run pipeline
-        run: python pipeline.py
+        run: python pipeline.py && cp report.html index.html
       - name: Commit updated report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add report.html report.md report.json
+          git add report.html report.md report.json index.html
           git diff --cached --quiet || git commit -m "chore: refresh ecosystem report [skip ci]"
           git push
       - name: Upload Pages artifact

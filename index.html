@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solana Ecosystem Dashboard</title>
+<style>
+  :root{--bg:#0b0f17;--panel:#111827;--muted:#6b7280;--text:#e5e7eb;--accent:#22d3ee;--good:#a3e635;--warn:#f59e0b;--bad:#ef4444}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:22px;margin:0 0 4px} .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+  .card{background:var(--panel);border:1px solid #1f2937;border-radius:14px;padding:16px}
+  .card .t{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  .card .v{font-size:26px;font-weight:700;margin:6px 0 2px} .card .s{color:var(--muted);font-size:12px}
+  .panel{background:var(--panel);border:1px solid #1f2937;border-radius:14px;padding:18px;margin-bottom:18px}
+  .panel h2{margin:0 0 12px;font-size:15px} .charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .chart{background:var(--panel);border:1px solid #1f2937;border-radius:14px;padding:14px}
+  .chart h3{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:13px} td,th{padding:8px 10px;border-bottom:1px solid #1f2937;text-align:left}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.05em}
+  .bar{background:#1f2937;border-radius:99px;height:10px;overflow:hidden;margin-top:6px}
+  .bar>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--good));width:23.15%}
+  .alert{list-style:none;padding:10px 12px;border-radius:10px;margin:8px 0;border-left:3px solid}
+  .alert.high{background:rgba(239,68,68,.08);border-color:var(--bad)}
+  .alert.medium{background:rgba(245,158,11,.08);border-color:var(--warn)}
+  .ok{color:var(--good)} code{color:var(--accent);font-size:12px}
+  footer{color:var(--muted);font-size:12px;margin-top:10px}
+  @media(max-width:720px){.charts{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<h1>Solana Ecosystem Dashboard</h1>
+<div class="sub">Auto-generated 2026-08-02T22:33:30.334733+00:00 &middot; sources: Solana RPC, DeFiLlama, CoinGecko (no API keys) &middot; rpc: ok · defillama: ok · coingecko: degraded</div>
+
+<div class="grid">
+  <div class="card"><div class="t">SOL price</div><div class="v">n/a</div><div class="s">n/a 24h</div></div>
+  <div class="card"><div class="t">Market cap</div><div class="v">n/a</div><div class="s"></div></div>
+  <div class="card"><div class="t">Solana TVL</div><div class="v">$4.76B</div><div class="s">0.44% 24h</div></div>
+  <div class="card"><div class="t">DEX volume 24h</div><div class="v">$1.30B</div><div class="s"></div></div>
+  <div class="card"><div class="t">Avg TPS</div><div class="v">3495.9</div><div class="s">recent performance samples</div></div>
+  <div class="card"><div class="t">Slot time</div><div class="v">0.421s</div><div class="s">target ~0.4s</div></div>
+  <div class="card"><div class="t">Validators</div><div class="v">689 active</div><div class="s">14 delinquent (1.99%)</div></div>
+  <div class="card"><div class="t">Health</div><div class="v">ok</div><div class="s"></div></div>
+</div>
+
+<div class="panel"><h2>Anomaly alerts</h2><ul><li class="alert medium"><b>[MEDIUM]</b> Validator delinquency 1.99% (>1%)</li></ul></div>
+
+<div class="panel"><h2>Epoch 1011 progress</h2>
+  <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted)">
+    <span>Slot 100,014 / 432,000</span><span>23.15%</span></div>
+  <div class="bar"><div></div></div></div>
+
+<div class="charts">
+  <div class="chart"><h3>SOL price — last 14 days</h3></div>
+  <div class="chart"><h3>Solana TVL — last 90 days</h3><svg width="520" height="140" viewBox="0 0 520 140"><polyline fill="none" stroke="#22d3ee" stroke-width="2" points="0.0,42.4 5.8,35.5 11.7,28.2 17.5,30.5 23.4,16.6 29.2,12.6 35.1,5.0 40.9,16.5 46.7,25.7 52.6,36.7 58.4,32.2 64.3,34.3 70.1,44.5 76.0,49.0 81.8,49.5 87.6,48.1 93.5,42.9 99.3,35.5 105.2,44.2 111.0,39.8 116.9,42.8 122.7,43.5 128.5,48.3 134.4,57.2 140.2,63.0 146.1,52.2 151.9,47.8 157.8,48.8 163.6,58.0 169.4,82.2 175.3,85.0 181.1,90.0 187.0,109.8 192.8,110.9 198.7,90.5 204.5,94.9 210.3,103.5 216.2,135.0 222.0,121.1 227.9,111.2 233.7,104.9 239.6,94.5 245.4,91.6 251.2,90.7 257.1,101.4 262.9,104.1 268.8,104.6 274.6,92.1 280.4,92.1 286.3,98.3 292.1,103.0 298.0,110.4 303.8,114.9 309.7,99.7 315.5,106.4 321.3,100.6 327.2,92.7 333.0,103.9 338.9,91.6 344.7,79.8 350.6,72.7 356.4,73.1 362.2,73.8 368.1,71.1 373.9,83.0 379.8,89.1 385.6,87.3 391.5,89.9 397.3,97.6 403.1,97.6 409.0,101.7 414.8,91.5 420.7,90.9 426.5,98.2 432.4,100.2 438.2,96.2 444.0,95.9 449.9,86.6 455.7,84.8 461.6,87.7 467.4,91.6 473.3,103.9 479.1,99.3 484.9,92.1 490.8,101.5 496.6,103.7 502.5,103.4 508.3,100.6 514.2,107.5 520.0,105.6"/></svg></div>
+</div>
+<div class="charts" style="margin-top:14px">
+  <div class="chart"><h3>DEX volume — last 7 days</h3><svg width="520" height="140" viewBox="0 0 520 140"><polyline fill="none" stroke="#f472b6" stroke-width="2" points="0.0,29.0 86.7,48.7 173.3,5.0 260.0,78.1 346.7,56.9 433.3,130.4 520.0,135.0"/></svg></div>
+  <div class="panel" style="margin:0"><h2>Top validators by stake</h2>
+    <table><tr><th>#</th><th>Node</th><th>Stake (SOL)</th><th>Commission</th></tr><tr><td>1</td><td><code>Fd7btgySsrju...</code></td><td>16,803,593</td><td>7%</td></tr><tr><td>2</td><td><code>HEL1USMZKAL2...</code></td><td>16,025,294</td><td>0%</td></tr><tr><td>3</td><td><code>JUPiTERrZqgf...</code></td><td>12,539,698</td><td>5%</td></tr><tr><td>4</td><td><code>DRpbCBMxVnDK...</code></td><td>12,256,190</td><td>0%</td></tr><tr><td>5</td><td><code>q9XWcZ7T1wP4...</code></td><td>9,151,490</td><td>7%</td></tr><tr><td>6</td><td><code>CAo1dCGYrB6N...</code></td><td>8,820,734</td><td>10%</td></tr><tr><td>7</td><td><code>E1r4Psq84tHf...</code></td><td>8,152,808</td><td>0%</td></tr><tr><td>8</td><td><code>EvnRmnMrd69k...</code></td><td>7,919,104</td><td>7%</td></tr><tr><td>9</td><td><code>9eGrDohdNTAo...</code></td><td>7,297,201</td><td>5%</td></tr><tr><td>10</td><td><code>Awes4Tr6TX8J...</code></td><td>6,646,244</td><td>0%</td></tr></table></div>
+</div>
+
+<div class="panel" style="margin-top:14px"><h2>Supply</h2>
+  <p>Total SOL: <b>631,503,618</b> &nbsp;&middot;&nbsp; Circulating: <b>581,193,623</b></p></div>
+
+<footer>Generated by the Solana Ecosystem Dashboard pipeline. Refresh by re-running <code>python pipeline.py</code>.</footer>
+</div></body></html>
