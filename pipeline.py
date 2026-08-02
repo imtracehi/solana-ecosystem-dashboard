@@ -31,14 +31,24 @@ UA = {"User-Agent": "solana-ecosystem-dashboard/1.0"}
 
 
 # ---------------------------------------------------------------- HTTP helpers
-def http_json(url, data=None, timeout=25):
+def http_json(url, data=None, timeout=25, retries=3):
     headers = dict(UA)
     if data is not None:
         data = json.dumps(data).encode()
         headers["Content-Type"] = "application/json"
-    req = urllib.request.Request(url, data=data, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.load(r)
+    delay = 5.0
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, data=data, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503) and attempt < retries - 1:
+                wait = e.headers.get("Retry-After")
+                time.sleep(float(wait) if wait and wait.isdigit() else delay)
+                delay *= 2
+                continue
+            raise
 
 
 def rpc(method, params=None):
@@ -160,8 +170,8 @@ def detect_anomalies(data):
     slot_time = data["rpc"].get("slot_time_sec")
     if slot_time is not None and slot_time > 0.6:
         alerts.append(("HIGH", f"Slow slot time {slot_time}s (>0.6s)"))
-    delq = data["rpc"]["validators"]["delinquency_pct"]
-    if delq > 1.0:
+    delq = data["rpc"]["validators"].get("delinquency_pct")
+    if delq is not None and delq > 1.0:
         alerts.append(("MEDIUM", f"Validator delinquency {delq}% (>1%)"))
     tvl_chg = data["defillama"].get("tvl_change_24h_pct")
     if tvl_chg is not None and abs(tvl_chg) > 5:
@@ -176,12 +186,29 @@ def detect_anomalies(data):
 
 # ------------------------------------------------------------------ assemble
 def build_report():
-    data = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "rpc": collect_rpc(),
-        "defillama": collect_defillama(),
-        "coingecko": collect_coingecko(),
-    }
+    """Collect from all sources; a failing source degrades gracefully to
+    placeholders so the report still ships (automation reliability)."""
+    data = {"generated_at": datetime.now(timezone.utc).isoformat(),
+            "source_status": {}}
+    for name, fn, fallback in (
+        ("rpc", collect_rpc, {"health": "unreachable", "validators": {
+            "active": None, "delinquent": None, "delinquency_pct": None,
+            "top_by_stake": [], "commission_avg_pct": None},
+            "supply": {"total_sol": None, "circulating_sol": None},
+            "epoch": {}, "tps_avg": None, "slot_time_sec": None}),
+        ("defillama", collect_defillama,
+         {"tvl_usd": None, "tvl_history": [], "dex_volume_24h_usd": None,
+          "dex_volume_7d_usd": [], "tvl_change_24h_pct": None}),
+        ("coingecko", collect_coingecko,
+         {"price_usd": None, "market_cap_usd": None, "change_24h_pct": None,
+          "volume_24h_usd": None, "price_history_14d": []}),
+    ):
+        try:
+            data[name] = fn()
+            data["source_status"][name] = "ok"
+        except Exception as e:
+            data[name] = fallback
+            data["source_status"][name] = f"error: {e}"
     data["alerts"] = detect_anomalies(data)
     return data
 
@@ -204,34 +231,44 @@ def fmt_usd(v):
     return f"${v:,.2f}"
 
 
+def fmt_pct(v):
+    return "n/a" if v is None else f"{v}%"
+
+
+def fmt_num(v):
+    return "n/a" if v is None else f"{v:,}"
+
+
 def write_markdown(data, path="report.md"):
     r = data["rpc"]
     d = data["defillama"]
     c = data["coingecko"]
+    epoch = r.get("epoch") or {}
     lines = [
         "# Solana Ecosystem Report",
         f"*Auto-generated {data['generated_at']}*",
         "",
         "## Market",
-        f"- **SOL price:** {fmt_usd(c['price_usd'])} ({c['change_24h_pct']}% 24h)",
-        f"- **Market cap:** {fmt_usd(c['market_cap_usd'])}",
-        f"- **24h volume:** {fmt_usd(c['volume_24h_usd'])}",
+        f"- **SOL price:** {fmt_usd(c.get('price_usd'))} ({fmt_pct(c.get('change_24h_pct'))} 24h)",
+        f"- **Market cap:** {fmt_usd(c.get('market_cap_usd'))}",
+        f"- **24h volume:** {fmt_usd(c.get('volume_24h_usd'))}",
         "",
         "## DeFi",
-        f"- **Solana TVL:** {fmt_usd(d['tvl_usd'])} ({d.get('tvl_change_24h_pct')}% 24h)",
+        f"- **Solana TVL:** {fmt_usd(d.get('tvl_usd'))} ({fmt_pct(d.get('tvl_change_24h_pct'))} 24h)",
         f"- **DEX volume (24h):** {fmt_usd(d.get('dex_volume_24h_usd'))}",
         "",
         "## Network",
-        f"- **Health:** {r['health']}",
+        f"- **Health:** {r.get('health')}",
         f"- **Avg TPS (recent samples):** {r.get('tps_avg')}",
         f"- **Avg slot time:** {r.get('slot_time_sec')}s",
-        f"- **Epoch:** {r['epoch']['epoch']} ({r['epoch_progress_pct']}% complete)",
-        f"- **Absolute slot:** {r['epoch']['absoluteSlot']:,}",
+        f"- **Epoch:** {epoch.get('epoch', 'n/a')} ({r.get('epoch_progress_pct', 'n/a')}% complete)",
+        f"- **Absolute slot:** {fmt_num(epoch.get('absoluteSlot'))}",
         "",
         "## Validators",
-        f"- **Active:** {r['validators']['active']}  |  **Delinquent:** {r['validators']['delinquent']}"
-        f" ({r['validators']['delinquency_pct']}%)",
-        f"- **Avg commission:** {r['validators']['commission_avg_pct']}%",
+        f"- **Active:** {fmt_num(r['validators'].get('active'))}  |  "
+        f"**Delinquent:** {fmt_num(r['validators'].get('delinquent'))} "
+        f"({fmt_pct(r['validators'].get('delinquency_pct'))})",
+        f"- **Avg commission:** {fmt_pct(r['validators'].get('commission_avg_pct'))}",
         "",
         "### Top validators by stake",
         "| # | Node | Stake (SOL) | Commission |",
@@ -246,8 +283,8 @@ def write_markdown(data, path="report.md"):
     lines += [
         "",
         "## Supply",
-        f"- **Total SOL:** {r['supply']['total_sol']:,}",
-        f"- **Circulating SOL:** {r['supply']['circulating_sol']:,}",
+        f"- **Total SOL:** {fmt_num(r['supply'].get('total_sol'))}",
+        f"- **Circulating SOL:** {fmt_num(r['supply'].get('circulating_sol'))}",
     ]
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -276,8 +313,10 @@ def write_html(data, path="report.html"):
     tvl_chart = svg_line([(p["date"], p["tvl"]) for p in d.get("tvl_history", [])])
     vol_chart = svg_line([(p["date"], p["volume"]) for p in d.get("dex_volume_7d_usd", [])],
                          stroke="#f472b6")
-    epoch = r["epoch"]
-    epoch_pct = r["epoch_progress_pct"]
+    epoch = r.get("epoch") or {}
+    epoch_pct = r.get("epoch_progress_pct") or 0
+    src_status = " · ".join(f"{k}: {v if v == 'ok' else 'degraded'}"
+                            for k, v in data.get("source_status", {}).items())
 
     def card(title, value, sub=""):
         return (f'<div class="card"><div class="t">{title}</div>'
@@ -286,7 +325,7 @@ def write_html(data, path="report.html"):
     top_rows = "".join(
         f"<tr><td>{i}</td><td><code>{v['node']}</code></td>"
         f"<td>{v['stake_sol']:,}</td><td>{v['commission_pct']}%</td></tr>"
-        for i, v in enumerate(r["validators"]["top_by_stake"], 1))
+        for i, v in enumerate(r["validators"].get("top_by_stake") or [], 1))
 
     alerts_html = ""
     if data["alerts"]:
@@ -326,24 +365,25 @@ def write_html(data, path="report.html"):
   @media(max-width:720px){{.charts{{grid-template-columns:1fr}}}}
 </style></head><body><div class="wrap">
 <h1>Solana Ecosystem Dashboard</h1>
-<div class="sub">Auto-generated {data['generated_at']} &middot; sources: Solana RPC, DeFiLlama, CoinGecko (no API keys)</div>
+<div class="sub">Auto-generated {data['generated_at']} &middot; sources: Solana RPC, DeFiLlama, CoinGecko (no API keys) &middot; {src_status}</div>
 
 <div class="grid">
-  {card("SOL price", fmt_usd(c['price_usd']), f"{c['change_24h_pct']}% 24h")}
-  {card("Market cap", fmt_usd(c['market_cap_usd']), "")}
-  {card("Solana TVL", fmt_usd(d['tvl_usd']), f"{d.get('tvl_change_24h_pct')}% 24h")}
+  {card("SOL price", fmt_usd(c.get('price_usd')), f"{fmt_pct(c.get('change_24h_pct'))} 24h")}
+  {card("Market cap", fmt_usd(c.get('market_cap_usd')), "")}
+  {card("Solana TVL", fmt_usd(d.get('tvl_usd')), f"{fmt_pct(d.get('tvl_change_24h_pct'))} 24h")}
   {card("DEX volume 24h", fmt_usd(d.get('dex_volume_24h_usd')), "")}
   {card("Avg TPS", r.get('tps_avg') or 'n/a', "recent performance samples")}
-  {card("Slot time", f"{r.get('slot_time_sec')}s", "target ~0.4s")}
-  {card("Validators", f"{r['validators']['active']} active", f"{r['validators']['delinquent']} delinquent ({r['validators']['delinquency_pct']}%)")}
-  {card("Health", r['health'], "")}
+  {card("Slot time", f"{r.get('slot_time_sec')}s" if r.get('slot_time_sec') else 'n/a', "target ~0.4s")}
+  {card("Validators", f"{fmt_num(r['validators'].get('active'))} active",
+        f"{fmt_num(r['validators'].get('delinquent'))} delinquent ({fmt_pct(r['validators'].get('delinquency_pct'))})")}
+  {card("Health", r.get('health'), "")}
 </div>
 
 {alerts_html}
 
-<div class="panel"><h2>Epoch {epoch['epoch']} progress</h2>
+<div class="panel"><h2>Epoch {epoch.get('epoch', 'n/a')} progress</h2>
   <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted)">
-    <span>Slot {epoch['slotIndex']:,} / {epoch['slotsInEpoch']:,}</span><span>{epoch_pct}%</span></div>
+    <span>Slot {fmt_num(epoch.get('slotIndex'))} / {fmt_num(epoch.get('slotsInEpoch'))}</span><span>{epoch_pct}%</span></div>
   <div class="bar"><div></div></div></div>
 
 <div class="charts">
@@ -357,7 +397,7 @@ def write_html(data, path="report.html"):
 </div>
 
 <div class="panel" style="margin-top:14px"><h2>Supply</h2>
-  <p>Total SOL: <b>{r['supply']['total_sol']:,}</b> &nbsp;&middot;&nbsp; Circulating: <b>{r['supply']['circulating_sol']:,}</b></p></div>
+  <p>Total SOL: <b>{fmt_num(r['supply'].get('total_sol'))}</b> &nbsp;&middot;&nbsp; Circulating: <b>{fmt_num(r['supply'].get('circulating_sol'))}</b></p></div>
 
 <footer>Generated by the Solana Ecosystem Dashboard pipeline. Refresh by re-running <code>python pipeline.py</code>.</footer>
 </div></body></html>"""
@@ -389,5 +429,5 @@ if __name__ == "__main__":
     else:
         d = run_once()
         print(f"Wrote report.json, report.md, report.html  "
-              f"(TPS={d['rpc'].get('tps_avg')}, TVL={fmt_usd(d['defillama']['tvl_usd'])}, "
+              f"(TPS={d['rpc'].get('tps_avg')}, TVL={fmt_usd(d['defillama'].get('tvl_usd'))}, "
               f"alerts={len(d['alerts'])})")
