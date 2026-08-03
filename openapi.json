@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Solana Ecosystem Data API",
+    "version": "1.0.0",
+    "description": "Live Solana ecosystem data: RPC endpoint status, DeFiLlama TVL, Coingecko prices, and ecosystem alerts. Auto-refreshed daily by GitHub Actions. Pay $0.001 USDC per request on Base via x402."
+  },
+  "servers": [
+    {
+      "url": "https://api.gatex402.dev",
+      "description": "GateX402 gateway"
+    }
+  ],
+  "paths": {
+    "/v1/solana-ecosystem-data-main/report.json": {
+      "get": {
+        "summary": "Solana ecosystem report (paid)",
+        "description": "Live Solana ecosystem data: RPC status, DeFiLlama TVL, Coingecko prices, ecosystem alerts. Auto-refreshed daily. Pay $0.001 USDC on Base via x402 (HTTP 402 with Payment-Required challenge, then retry with Payment-Signature header).",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Solana ecosystem report JSON (21KB, refreshed daily)"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required - include x402 payment in Payment-Signature header"
+          }
+        },
+        "x-payment-info": {
+          "payTo": "0xb41a021db4c6D64Ae58364037178FB2b5A35294d",
+          "price": {
+            "amount": "0.001",
+            "currency": "USD",
+            "mode": "fixed"
+          },
+          "protocols": [
+            {
+              "x402": {}
+            }
+          ]
+        }
+      }
+    }
+  },
+  "x-discovery": {
+    "ownershipProofs": []
+  }
+}
