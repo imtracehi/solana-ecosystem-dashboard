@@ -1,43 +1,44 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-08-21T06:53:31.919002+00:00*
+*Auto-generated 2026-08-22T06:45:23.344999+00:00*
 
 ## Market
-- **SOL price:** $90.18 (5.17% 24h)
-- **Market cap:** $52.59B
-- **24h volume:** $5.02B
+- **SOL price:** $94.77 (5.19% 24h)
+- **Market cap:** $55.28B
+- **24h volume:** $8.83B
 
 ## DeFi
-- **Solana TVL:** $5.38B (2.95% 24h)
-- **DEX volume (24h):** $2.78B
+- **Solana TVL:** $5.63B (5.62% 24h)
+- **DEX volume (24h):** $3.47B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 3335.5
-- **Avg slot time:** 0.415s
-- **Epoch:** 1019 (98.24% complete)
-- **Absolute slot:** 440,632,390
+- **Avg TPS (recent samples):** 3930.1
+- **Avg slot time:** 0.367s
+- **Epoch:** 1020 (52.26% complete)
+- **Absolute slot:** 440,865,749
 
 ## Validators
-- **Active:** 689  |  **Delinquent:** 7 (1.01%)
-- **Avg commission:** 12.28%
+- **Active:** 684  |  **Delinquent:** 10 (1.44%)
+- **Avg commission:** 12.21%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | Fd7btgySsrju... | 17,101,527 | 7% |
-| 2 | HEL1USMZKAL2... | 16,011,570 | 0% |
-| 3 | JUPiTERrZqgf... | 12,410,378 | 5% |
-| 4 | DRpbCBMxVnDK... | 12,198,972 | 0% |
-| 5 | C8Bey3LKVJHV... | 9,188,631 | 7% |
-| 6 | CAo1dCGYrB6N... | 8,991,290 | 10% |
-| 7 | E1r4Psq84tHf... | 8,308,413 | 0% |
-| 8 | EvnRmnMrd69k... | 7,991,431 | 7% |
-| 9 | 9eGrDohdNTAo... | 7,344,655 | 5% |
-| 10 | Awes4Tr6TX8J... | 6,546,146 | 0% |
+| 1 | Fd7btgySsrju... | 17,066,372 | 7% |
+| 2 | HEL1USMZKAL2... | 16,054,078 | 0% |
+| 3 | DRpbCBMxVnDK... | 12,175,413 | 0% |
+| 4 | JUPiTERrZqgf... | 11,782,032 | 5% |
+| 5 | C8Bey3LKVJHV... | 9,178,661 | 7% |
+| 6 | CAo1dCGYrB6N... | 8,917,577 | 10% |
+| 7 | E1r4Psq84tHf... | 8,402,660 | 0% |
+| 8 | EvnRmnMrd69k... | 7,964,352 | 7% |
+| 9 | 9eGrDohdNTAo... | 7,357,821 | 5% |
+| 10 | Awes4Tr6TX8J... | 6,547,243 | 0% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 1.01% (>1%)
+- **[MEDIUM]** Validator delinquency 1.44% (>1%)
+- **[MEDIUM]** TVL moved 5.62% in 24h
 
 ## Supply
-- **Total SOL:** 632,512,900
-- **Circulating SOL:** 583,063,092
+- **Total SOL:** 632,639,554
+- **Circulating SOL:** 583,177,224
