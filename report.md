@@ -1,44 +1,43 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-08-22T06:45:23.344999+00:00*
+*Auto-generated 2026-08-23T06:46:49.502549+00:00*
 
 ## Market
-- **SOL price:** $94.77 (5.19% 24h)
-- **Market cap:** $55.28B
-- **24h volume:** $8.83B
+- **SOL price:** $92.45 (-2.4% 24h)
+- **Market cap:** $53.92B
+- **24h volume:** $5.25B
 
 ## DeFi
-- **Solana TVL:** $5.63B (5.62% 24h)
-- **DEX volume (24h):** $3.47B
+- **Solana TVL:** $5.54B (-0.23% 24h)
+- **DEX volume (24h):** $3.65B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 3930.1
-- **Avg slot time:** 0.367s
-- **Epoch:** 1020 (52.26% complete)
-- **Absolute slot:** 440,865,749
+- **Avg TPS (recent samples):** 3614.6
+- **Avg slot time:** 0.365s
+- **Epoch:** 1021 (6.84% complete)
+- **Absolute slot:** 441,101,531
 
 ## Validators
-- **Active:** 684  |  **Delinquent:** 10 (1.44%)
-- **Avg commission:** 12.21%
+- **Active:** 686  |  **Delinquent:** 9 (1.29%)
+- **Avg commission:** 11.89%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | Fd7btgySsrju... | 17,066,372 | 7% |
-| 2 | HEL1USMZKAL2... | 16,054,078 | 0% |
-| 3 | DRpbCBMxVnDK... | 12,175,413 | 0% |
-| 4 | JUPiTERrZqgf... | 11,782,032 | 5% |
-| 5 | C8Bey3LKVJHV... | 9,178,661 | 7% |
-| 6 | CAo1dCGYrB6N... | 8,917,577 | 10% |
-| 7 | E1r4Psq84tHf... | 8,402,660 | 0% |
-| 8 | EvnRmnMrd69k... | 7,964,352 | 7% |
-| 9 | 9eGrDohdNTAo... | 7,357,821 | 5% |
-| 10 | Awes4Tr6TX8J... | 6,547,243 | 0% |
+| 1 | Fd7btgySsrju... | 16,984,006 | 7% |
+| 2 | HEL1USMZKAL2... | 16,032,941 | 0% |
+| 3 | DRpbCBMxVnDK... | 12,211,671 | 0% |
+| 4 | JUPiTERrZqgf... | 11,728,738 | 5% |
+| 5 | C8Bey3LKVJHV... | 9,165,202 | 7% |
+| 6 | CAo1dCGYrB6N... | 8,876,408 | 10% |
+| 7 | E1r4Psq84tHf... | 8,480,578 | 0% |
+| 8 | EvnRmnMrd69k... | 7,930,731 | 7% |
+| 9 | 9eGrDohdNTAo... | 7,359,446 | 5% |
+| 10 | Awes4Tr6TX8J... | 6,568,551 | 0% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 1.44% (>1%)
-- **[MEDIUM]** TVL moved 5.62% in 24h
+- **[MEDIUM]** Validator delinquency 1.29% (>1%)
 
 ## Supply
-- **Total SOL:** 632,639,554
-- **Circulating SOL:** 583,177,224
+- **Total SOL:** 632,750,315
+- **Circulating SOL:** 583,277,432
