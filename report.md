@@ -1,44 +1,43 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-10-30T12:25:19.806510+00:00*
+*Auto-generated 2026-10-31T11:55:10.550792+00:00*
 
 ## Market
-- **SOL price:** $96.54 (-3.73% 24h)
-- **Market cap:** $56.96B
-- **24h volume:** $5.82B
+- **SOL price:** $95.79 (-0.65% 24h)
+- **Market cap:** $56.54B
+- **24h volume:** $2.98B
 
 ## DeFi
-- **Solana TVL:** $5.40B (-5.26% 24h)
-- **DEX volume (24h):** $2.30B
+- **Solana TVL:** $5.42B (1.39% 24h)
+- **DEX volume (24h):** $2.12B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 1316.6
+- **Avg TPS (recent samples):** 1063.4
 - **Avg slot time:** 0.214s
-- **Epoch:** 1072 (41.74% complete)
-- **Absolute slot:** 463,284,301
+- **Epoch:** 1073 (33.16% complete)
+- **Absolute slot:** 463,679,250
 
 ## Validators
-- **Active:** 665  |  **Delinquent:** 26 (3.76%)
-- **Avg commission:** 12.77%
+- **Active:** 665  |  **Delinquent:** 27 (3.9%)
+- **Avg commission:** 12.76%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | Fd7btgySsrju... | 16,965,456 | 7% |
-| 2 | HEL1USMZKAL2... | 16,678,000 | 0% |
-| 3 | DRpbCBMxVnDK... | 12,919,680 | 0% |
-| 4 | E1r4Psq84tHf... | 10,502,229 | 0% |
-| 5 | JUPiTERrZqgf... | 9,659,910 | 5% |
-| 6 | CAo1dCGYrB6N... | 9,473,552 | 10% |
-| 7 | C8Bey3LKVJHV... | 9,222,406 | 7% |
-| 8 | EvnRmnMrd69k... | 7,780,140 | 7% |
-| 9 | 9eGrDohdNTAo... | 7,045,150 | 5% |
-| 10 | Awes4Tr6TX8J... | 7,001,506 | 0% |
+| 1 | Fd7btgySsrju... | 17,020,574 | 7% |
+| 2 | HEL1USMZKAL2... | 16,688,715 | 0% |
+| 3 | DRpbCBMxVnDK... | 12,931,864 | 0% |
+| 4 | E1r4Psq84tHf... | 10,425,467 | 0% |
+| 5 | JUPiTERrZqgf... | 9,651,671 | 5% |
+| 6 | CAo1dCGYrB6N... | 9,449,481 | 10% |
+| 7 | C8Bey3LKVJHV... | 9,227,526 | 7% |
+| 8 | EvnRmnMrd69k... | 7,778,595 | 7% |
+| 9 | Awes4Tr6TX8J... | 7,000,338 | 0% |
+| 10 | 9eGrDohdNTAo... | 6,976,145 | 5% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 3.76% (>1%)
-- **[MEDIUM]** TVL moved -5.26% in 24h
+- **[MEDIUM]** Validator delinquency 3.9% (>1%)
 
 ## Supply
-- **Total SOL:** 636,700,290
-- **Circulating SOL:** 590,039,895
+- **Total SOL:** 636,761,211
+- **Circulating SOL:** 590,095,144
