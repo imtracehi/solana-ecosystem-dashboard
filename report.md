@@ -1,24 +1,24 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-11-06T13:57:25.296749+00:00*
+*Auto-generated 2026-11-07T12:41:50.697369+00:00*
 
 ## Market
-- **SOL price:** $90.28 (-5.31% 24h)
-- **Market cap:** $53.32B
-- **24h volume:** $3.76B
+- **SOL price:** $89.82 (-0.81% 24h)
+- **Market cap:** $53.10B
+- **24h volume:** $1.69B
 
 ## DeFi
-- **Solana TVL:** $5.29B (-4.39% 24h)
-- **DEX volume (24h):** $2.20B
+- **Solana TVL:** $5.21B (-0.93% 24h)
+- **DEX volume (24h):** $1.48B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 1515.4
+- **Avg TPS (recent samples):** 1123.2
 - **Avg slot time:** 0.214s
-- **Epoch:** 1079 (1.49% complete)
-- **Absolute slot:** 466,134,453
+- **Epoch:** 1079 (89.85% complete)
+- **Absolute slot:** 466,516,140
 
 ## Validators
-- **Active:** 648  |  **Delinquent:** 48 (6.9%)
+- **Active:** 660  |  **Delinquent:** 36 (5.17%)
 - **Avg commission:** 12.89%
 
 ### Top validators by stake
@@ -36,8 +36,8 @@
 | 10 | Awes4Tr6TX8J... | 6,971,614 | 0% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 6.9% (>1%)
+- **[MEDIUM]** Validator delinquency 5.17% (>1%)
 
 ## Supply
-- **Total SOL:** 637,127,967
-- **Circulating SOL:** 590,342,866
+- **Total SOL:** 637,127,604
+- **Circulating SOL:** 590,982,519
