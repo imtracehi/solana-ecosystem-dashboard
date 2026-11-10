@@ -1,43 +1,43 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-11-09T15:39:59.704912+00:00*
+*Auto-generated 2026-11-10T14:34:45.017103+00:00*
 
 ## Market
-- **SOL price:** $87.49 (-2.37% 24h)
-- **Market cap:** $51.75B
-- **24h volume:** $3.05B
+- **SOL price:** $83.51 (-4.09% 24h)
+- **Market cap:** $49.36B
+- **24h volume:** $2.42B
 
 ## DeFi
-- **Solana TVL:** $5.06B (-2.26% 24h)
-- **DEX volume (24h):** $1.04B
+- **Solana TVL:** $4.99B (-2.08% 24h)
+- **DEX volume (24h):** $1.49B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 2436.3
-- **Avg slot time:** 0.215s
-- **Epoch:** 1081 (87.76% complete)
-- **Absolute slot:** 467,371,113
+- **Avg TPS (recent samples):** 1933.9
+- **Avg slot time:** 0.213s
+- **Epoch:** 1082 (76.85% complete)
+- **Absolute slot:** 467,755,993
 
 ## Validators
-- **Active:** 661  |  **Delinquent:** 36 (5.16%)
-- **Avg commission:** 13.03%
+- **Active:** 657  |  **Delinquent:** 41 (5.87%)
+- **Avg commission:** 12.81%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | Fd7btgySsrju... | 17,050,553 | 7% |
-| 2 | HEL1USMZKAL2... | 16,720,131 | 0% |
-| 3 | DRpbCBMxVnDK... | 13,021,912 | 0% |
-| 4 | E1r4Psq84tHf... | 10,279,070 | 0% |
-| 5 | JUPiTERkf97e... | 9,553,388 | 5% |
-| 6 | 7jtWrBuj9k2E... | 9,550,278 | 10% |
-| 7 | C8Bey3LKVJHV... | 9,222,876 | 7% |
-| 8 | EvnRmnMrd69k... | 7,775,137 | 7% |
-| 9 | Awes4Tr6TX8J... | 6,980,319 | 0% |
-| 10 | 9eGrDohdNTAo... | 6,711,284 | 5% |
+| 1 | Fd7btgySsrju... | 16,898,208 | 7% |
+| 2 | HEL1USMZKAL2... | 16,746,254 | 0% |
+| 3 | DRpbCBMxVnDK... | 13,034,244 | 0% |
+| 4 | E1r4Psq84tHf... | 10,280,950 | 0% |
+| 5 | 7jtWrBuj9k2E... | 9,598,549 | 10% |
+| 6 | JUPiTERkf97e... | 9,553,851 | 5% |
+| 7 | C8Bey3LKVJHV... | 9,233,159 | 7% |
+| 8 | EvnRmnMrd69k... | 7,813,316 | 7% |
+| 9 | Awes4Tr6TX8J... | 6,987,971 | 0% |
+| 10 | 9eGrDohdNTAo... | 6,712,231 | 5% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 5.16% (>1%)
+- **[MEDIUM]** Validator delinquency 5.87% (>1%)
 
 ## Supply
-- **Total SOL:** 637,249,797
-- **Circulating SOL:** 591,093,555
+- **Total SOL:** 637,310,912
+- **Circulating SOL:** 591,149,042
