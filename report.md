@@ -1,43 +1,43 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-11-18T15:22:05.646936+00:00*
+*Auto-generated 2026-11-19T15:28:26.996631+00:00*
 
 ## Market
-- **SOL price:** $74.01 (0.64% 24h)
-- **Market cap:** $43.79B
-- **24h volume:** $2.52B
+- **SOL price:** $74.62 (1.1% 24h)
+- **Market cap:** $44.19B
+- **24h volume:** $2.01B
 
 ## DeFi
-- **Solana TVL:** $4.75B (0.96% 24h)
-- **DEX volume (24h):** $1.51B
+- **Solana TVL:** $4.77B (-0.61% 24h)
+- **DEX volume (24h):** $1.82B
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 2381.3
-- **Avg slot time:** 0.216s
-- **Epoch:** 1090 (23.87% complete)
-- **Absolute slot:** 470,983,098
+- **Avg TPS (recent samples):** 2450.3
+- **Avg slot time:** 0.215s
+- **Epoch:** 1091 (17.14% complete)
+- **Absolute slot:** 471,386,028
 
 ## Validators
-- **Active:** 660  |  **Delinquent:** 25 (3.65%)
-- **Avg commission:** 12.61%
+- **Active:** 659  |  **Delinquent:** 26 (3.8%)
+- **Avg commission:** 12.63%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | HEL1USMZKAL2... | 17,030,759 | 0% |
-| 2 | Fd7btgySsrju... | 16,476,078 | 7% |
-| 3 | DRpbCBMxVnDK... | 12,423,470 | 0% |
-| 4 | E1r4Psq84tHf... | 10,297,722 | 0% |
-| 5 | 7jtWrBuj9k2E... | 9,815,430 | 10% |
-| 6 | JUPiTERkf97e... | 9,574,562 | 5% |
-| 7 | C8Bey3LKVJHV... | 9,222,715 | 7% |
-| 8 | EvnRmnMrd69k... | 7,973,220 | 7% |
-| 9 | Awes4Tr6TX8J... | 6,996,720 | 0% |
-| 10 | 9eGrDohdNTAo... | 6,771,472 | 5% |
+| 1 | HEL1USMZKAL2... | 17,028,960 | 0% |
+| 2 | Fd7btgySsrju... | 16,375,745 | 7% |
+| 3 | DRpbCBMxVnDK... | 12,422,025 | 0% |
+| 4 | E1r4Psq84tHf... | 10,299,570 | 0% |
+| 5 | 7jtWrBuj9k2E... | 9,815,431 | 10% |
+| 6 | JUPiTERkf97e... | 9,573,248 | 5% |
+| 7 | C8Bey3LKVJHV... | 9,225,578 | 7% |
+| 8 | EvnRmnMrd69k... | 7,980,784 | 7% |
+| 9 | Awes4Tr6TX8J... | 6,997,844 | 0% |
+| 10 | 9eGrDohdNTAo... | 6,772,455 | 5% |
 
 ## Anomaly alerts
-- **[MEDIUM]** Validator delinquency 3.65% (>1%)
+- **[MEDIUM]** Validator delinquency 3.8% (>1%)
 
 ## Supply
-- **Total SOL:** 637,798,885
-- **Circulating SOL:** 591,794,849
+- **Total SOL:** 637,859,749
+- **Circulating SOL:** 591,851,574
