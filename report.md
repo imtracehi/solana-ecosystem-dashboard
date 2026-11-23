@@ -1,43 +1,43 @@
 # Solana Ecosystem Report
-*Auto-generated 2026-11-22T14:19:00.106472+00:00*
+*Auto-generated 2026-11-23T17:42:07.136701+00:00*
 
 ## Market
-- **SOL price:** $70.19 (-0.25% 24h)
-- **Market cap:** $41.55B
-- **24h volume:** $2.03B
+- **SOL price:** $73.86 (4.84% 24h)
+- **Market cap:** $43.69B
+- **24h volume:** $3.34B
 
 ## DeFi
-- **Solana TVL:** $4.62B (1.47% 24h)
-- **DEX volume (24h):** $1.35B
+- **Solana TVL:** $4.74B (3.26% 24h)
+- **DEX volume (24h):** $975.74M
 
 ## Network
 - **Health:** ok
-- **Avg TPS (recent samples):** 1327.0
+- **Avg TPS (recent samples):** 2695.7
 - **Avg slot time:** 0.215s
-- **Epoch:** 1093 (91.59% complete)
-- **Absolute slot:** 472,571,673
+- **Epoch:** 1094 (97.72% complete)
+- **Absolute slot:** 473,030,137
 
 ## Validators
 - **Active:** 661  |  **Delinquent:** 24 (3.5%)
-- **Avg commission:** 12.9%
+- **Avg commission:** 13.07%
 
 ### Top validators by stake
 | # | Node | Stake (SOL) | Commission |
 |---|------|------------|------------|
-| 1 | HEL1USMZKAL2... | 17,043,671 | 0% |
-| 2 | Fd7btgySsrju... | 16,329,817 | 7% |
-| 3 | DRpbCBMxVnDK... | 12,412,620 | 0% |
-| 4 | E1r4Psq84tHf... | 10,241,724 | 0% |
-| 5 | 7jtWrBuj9k2E... | 9,826,793 | 10% |
-| 6 | JUPiTERkf97e... | 9,616,961 | 5% |
-| 7 | C8Bey3LKVJHV... | 9,237,166 | 7% |
-| 8 | EvnRmnMrd69k... | 7,985,737 | 7% |
-| 9 | Awes4Tr6TX8J... | 6,985,063 | 0% |
-| 10 | 9eGrDohdNTAo... | 6,774,154 | 5% |
+| 1 | HEL1USMZKAL2... | 16,918,440 | 0% |
+| 2 | Fd7btgySsrju... | 16,346,959 | 7% |
+| 3 | DRpbCBMxVnDK... | 12,401,889 | 0% |
+| 4 | E1r4Psq84tHf... | 10,243,005 | 0% |
+| 5 | 7jtWrBuj9k2E... | 9,842,253 | 10% |
+| 6 | JUPiTERkf97e... | 9,612,896 | 5% |
+| 7 | C8Bey3LKVJHV... | 9,269,555 | 7% |
+| 8 | EvnRmnMrd69k... | 7,998,895 | 7% |
+| 9 | Awes4Tr6TX8J... | 6,987,495 | 0% |
+| 10 | 9eGrDohdNTAo... | 6,775,083 | 5% |
 
 ## Anomaly alerts
 - **[MEDIUM]** Validator delinquency 3.5% (>1%)
 
 ## Supply
-- **Total SOL:** 637,981,283
-- **Circulating SOL:** 591,961,451
+- **Total SOL:** 638,042,166
+- **Circulating SOL:** 592,016,565
